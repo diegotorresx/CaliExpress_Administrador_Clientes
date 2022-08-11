@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Folders" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="InOut_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="strCountExecution" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1257,3759</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>907,3131</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Folders_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -65,11 +66,11 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="// Workflow encargado de crear las carpetas utilizadas por el robot. Consisten en las carpetas Configuración, Parametrización, Formatos, Archivos Generados y Archivos Recibidos &#xA;Input: -Diccionario config&#xA;Output: N/A" DisplayName="Folders" sap:VirtualizedContainerService.HintSize="917,3694" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="// Workflow encargado de crear las carpetas utilizadas por el robot. Consisten en las carpetas Configuración, Parametrización, Formatos, Archivos Generados y Archivos Recibidos &#xA;Input: -Diccionario config&#xA;Output: N/A" DisplayName="Folders" sap:VirtualizedContainerService.HintSize="917,3066" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="StrDocumentsPath" />
       <Variable x:TypeArguments="x:String" Name="StrCarpetaProyecto" />
@@ -110,70 +111,16 @@
         <InArgument x:TypeArguments="x:String">[Path.Combine(StrDocumentsPath, InOut_Config("name").ToString)]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="875,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+    <ui:Comment sap:VirtualizedContainerService.HintSize="875,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Foreach permite crear una carpeta unica para cada ejecución en archivos recibidos" />
+    <ui:CreateDirectory Output="{x:Null}" ContinueOnError="True" DisplayName="Crear carpeta" sap:VirtualizedContainerService.HintSize="875,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_8" Path="[Path.Combine(StrCarpetaProyecto, &quot;Archivos Recibidos&quot;, DateTime.Now.ToString(&quot;yyyy/MM&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString())]" />
+    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="875,60" sap2010:WorkflowViewState.IdRef="Assign_14">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
+        <OutArgument x:TypeArguments="x:Object">[InOut_Config("RutaArchivosRecibidos")]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">1</InArgument>
+        <InArgument x:TypeArguments="x:Object">[Path.Combine(StrCarpetaProyecto, "Archivos Recibidos", DateTime.Now.ToString("yyyy/MM/dd").Replace("/","\"),intCount.ToString())]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:Comment sap:VirtualizedContainerService.HintSize="875,74" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Foreach permite crear una carpeta unica para cada ejecución en archivos recibidos" />
-    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="875,807" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Enumerable.Range(0,50)]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="839,683" sap2010:WorkflowViewState.IdRef="Sequence_3">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Directory.Exists(Path.Combine(StrCarpetaProyecto, &quot;Archivos Recibidos&quot;, DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString()))]" sap:VirtualizedContainerService.HintSize="797,491" sap2010:WorkflowViewState.IdRef="If_1">
-              <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;La ruta: &quot; + Path.Combine(StrCarpetaProyecto, &quot;Archivos Recibidos&quot;, DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString()) + &quot;Ya existe&quot;]" />
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,333" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:CreateDirectory Output="{x:Null}" ContinueOnError="True" DisplayName="Crear carpeta" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_8" Path="[Path.Combine(StrCarpetaProyecto, &quot;Archivos Recibidos&quot;, DateTime.Now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString())]" />
-                  <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_14">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Object">[InOut_Config("RutaArchivosRecibidos")]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Object">[Path.Combine(StrCarpetaProyecto, "Archivos Recibidos", DateTime.Now.ToString("yyyy/MM/dd").Replace("/","\"),intCount.ToString())]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:Break sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Break_3" />
-                </Sequence>
-              </If.Else>
-            </If>
-            <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_10">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Int32">[intCount + 1]</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
     <Assign sap:VirtualizedContainerService.HintSize="875,60" sap2010:WorkflowViewState.IdRef="Assign_11">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[intCount]</OutArgument>
@@ -183,7 +130,7 @@
       </Assign.Value>
     </Assign>
     <ui:Comment sap:VirtualizedContainerService.HintSize="875,74" sap2010:WorkflowViewState.IdRef="Comment_2" Text="Foreach permite crear una carpeta unica para cada ejecución en archivos generados" />
-    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="875,807" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[Enumerable.Range(0,50)]">
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="875,807" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[Enumerable.Range(0,300)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -195,7 +142,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[Directory.Exists(Path.Combine(StrCarpetaProyecto, &quot;Archivos Generados&quot;, now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString()))]" sap:VirtualizedContainerService.HintSize="797,491" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[Directory.Exists(Path.Combine(StrCarpetaProyecto, &quot;Archivos Generados&quot;, now.ToString(&quot;yyyy/MM&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString()))]" sap:VirtualizedContainerService.HintSize="797,491" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
@@ -213,7 +160,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CreateDirectory Output="{x:Null}" ContinueOnError="True" DisplayName="Crear carpeta" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_9" Path="[Path.Combine(StrCarpetaProyecto, &quot;Archivos Generados&quot;, now.ToString(&quot;yyyy/MM/dd&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString())]" />
+                  <ui:CreateDirectory Output="{x:Null}" ContinueOnError="True" DisplayName="Crear carpeta" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_9" Path="[Path.Combine(StrCarpetaProyecto, &quot;Archivos Generados&quot;, now.ToString(&quot;yyyy/MM&quot;).Replace(&quot;/&quot;,&quot;\&quot;),intCount.ToString())]" />
                   <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Object">[InOut_Config("RutaArchivosGenerados")]</OutArgument>
@@ -272,6 +219,14 @@
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:Object">[Path.Combine(StrCarpetaProyecto, "Formatos")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="875,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[strCountExecution]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[intCount.ToString()]</InArgument>
       </Assign.Value>
     </Assign>
   </Sequence>

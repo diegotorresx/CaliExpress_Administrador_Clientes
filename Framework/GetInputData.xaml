@@ -1,0 +1,439 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetInputData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="dtInputData" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1009,2705</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetInputData" sap:VirtualizedContainerService.HintSize="1019,2640" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConnection" />
+      <Variable x:TypeArguments="x:String" Name="strFileInput" />
+      <Variable x:TypeArguments="x:Int32" Name="intCountColumn" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="977,2548" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="939,2321" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="si:DirectoryInfo" Name="directoryInfoGetFiles" />
+            <Variable x:TypeArguments="si:FileInfo[]" Name="fileInfoDownloadInput" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <If sap:VirtualizedContainerService.HintSize="897,2229" sap2010:WorkflowViewState.IdRef="If_1">
+            <If.Condition>
+              <InArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">!File.Exists(Path.Combine(in_Config["RutaArchivosRecibidos"].ToString(),"Control.txt"))</mca:CSharpValue>
+              </InArgument>
+            </If.Condition>
+            <If.Then>
+              <Sequence sap:VirtualizedContainerService.HintSize="476,2071" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="si:DirectoryInfo">
+                      <mca:CSharpReference x:TypeArguments="si:DirectoryInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">directoryInfoGetFiles</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="si:DirectoryInfo">
+                      <mca:CSharpValue x:TypeArguments="si:DirectoryInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">new DirectoryInfo(in_Config["RutaArchivosRecibidos"].ToString())</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="si:FileInfo[]">
+                      <mca:CSharpReference x:TypeArguments="si:FileInfo[]" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">fileInfoDownloadInput</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="si:FileInfo[]">
+                      <mca:CSharpValue x:TypeArguments="si:FileInfo[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">directoryInfoGetFiles.GetFiles("*.xlsx")</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">
+                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">strFileInput</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">fileInfoDownloadInput[0].Name.ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.OleDb">
+                  <ui:DatabaseConnect.ConnectionString>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">in_Config["ConnectionStringFirstPart"].ToString() + strFileInput + in_Config["ConnectionStringSecondPart"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:DatabaseConnect.ConnectionString>
+                  <ui:DatabaseConnect.DatabaseConnection>
+                    <OutArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpReference x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">dbConnection</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:DatabaseConnect.DatabaseConnection>
+                </ui:DatabaseConnect>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="434,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1">
+                  <ui:ExecuteQuery.DataTable>
+                    <OutArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">dtInputData</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:ExecuteQuery.DataTable>
+                  <ui:ExecuteQuery.ExistingDbConnection>
+                    <InArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">dbConnection</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ExecuteQuery.ExistingDbConnection>
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                  <ui:ExecuteQuery.Sql>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">in_Config["SelectDataToProcess"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ExecuteQuery.Sql>
+                </ui:ExecuteQuery>
+                <ui:DatabaseDisconnect DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1">
+                  <ui:DatabaseDisconnect.DatabaseConnection>
+                    <InArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">dbConnection</mca:CSharpValue>
+                    </InArgument>
+                  </ui:DatabaseDisconnect.DatabaseConnection>
+                </ui:DatabaseDisconnect>
+                <ui:CopyFile ContinueOnError="{x:Null}" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_1">
+                  <ui:CopyFile.Destination>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_Config["fileToProcess"].ToString())</mca:CSharpValue>
+                    </InArgument>
+                  </ui:CopyFile.Destination>
+                  <ui:CopyFile.Path>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">Path.Combine(in_Config["RutaFormatos"].ToString(),in_Config["formatoInformeEjecucion"].ToString())</mca:CSharpValue>
+                    </InArgument>
+                  </ui:CopyFile.Path>
+                </ui:CopyFile>
+                <ui:WriteRange AddHeaders="False" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" StartingCell="B2">
+                  <ui:WriteRange.DataTable>
+                    <InArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">dtInputData</mca:CSharpValue>
+                    </InArgument>
+                  </ui:WriteRange.DataTable>
+                  <ui:WriteRange.SheetName>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">in_Config["InformeEjecucionSheetName"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:WriteRange.SheetName>
+                  <ui:WriteRange.WorkbookPath>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_Config["fileToProcess"].ToString())</mca:CSharpValue>
+                    </InArgument>
+                  </ui:WriteRange.WorkbookPath>
+                </ui:WriteRange>
+                <Assign sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:Int32">
+                      <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">intCountColumn</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:Int32">2</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,477" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,362" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:WriteCell DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_1">
+                          <ui:WriteCell.Cell>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">"A"+intCountColumn.ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.Cell>
+                          <ui:WriteCell.SheetName>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">in_Config["InformeEjecucionSheetName"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.SheetName>
+                          <ui:WriteCell.Text>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">intCountColumn.ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.Text>
+                          <ui:WriteCell.WorkbookPath>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_Config["fileToProcess"].ToString())</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.WorkbookPath>
+                        </ui:WriteCell>
+                        <ui:WriteCell DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteCell_2" Text="NEW">
+                          <ui:WriteCell.Cell>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">"C"+intCountColumn.ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.Cell>
+                          <ui:WriteCell.SheetName>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">in_Config["InformeEjecucionSheetName"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.SheetName>
+                          <ui:WriteCell.WorkbookPath>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_Config["fileToProcess"].ToString())</mca:CSharpValue>
+                            </InArgument>
+                          </ui:WriteCell.WorkbookPath>
+                        </ui:WriteCell>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEachRow.Body>
+                  <ui:ForEachRow.DataTable>
+                    <InArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">dtInputData</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ForEachRow.DataTable>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEachRow>
+                <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="System.Data.OleDb">
+                  <ui:DatabaseConnect.ConnectionString>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">in_Config["ConnectionStringFirstPart"].ToString() + Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_Config["fileToProcess"].ToString()) + in_Config["ConnectionStringSecondPart"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:DatabaseConnect.ConnectionString>
+                  <ui:DatabaseConnect.DatabaseConnection>
+                    <OutArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpReference x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">dbConnection</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:DatabaseConnect.DatabaseConnection>
+                </ui:DatabaseConnect>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="434,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2">
+                  <ui:ExecuteQuery.DataTable>
+                    <OutArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">dtInputData</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:ExecuteQuery.DataTable>
+                  <ui:ExecuteQuery.ExistingDbConnection>
+                    <InArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">dbConnection</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ExecuteQuery.ExistingDbConnection>
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                  <ui:ExecuteQuery.Sql>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">in_Config["SelectLoteProcess"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ExecuteQuery.Sql>
+                </ui:ExecuteQuery>
+                <ui:DatabaseDisconnect DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_2">
+                  <ui:DatabaseDisconnect.DatabaseConnection>
+                    <InArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">dbConnection</mca:CSharpValue>
+                    </InArgument>
+                  </ui:DatabaseDisconnect.DatabaseConnection>
+                </ui:DatabaseDisconnect>
+                <ui:CreateFile ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create File" sap:VirtualizedContainerService.HintSize="434,132" sap2010:WorkflowViewState.IdRef="CreateFile_1" Name="Control.txt">
+                  <ui:CreateFile.Path>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">in_Config["RutaArchivosRecibidos"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:CreateFile.Path>
+                </ui:CreateFile>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="376,341" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="System.Data.OleDb">
+                  <ui:DatabaseConnect.ConnectionString>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">in_Config["ConnectionStringFirstPart"].ToString() + Path.Combine(in_Config["RutaArchivosGenerados"].ToString(),in_Config["fileToProcess"].ToString()) + in_Config["ConnectionStringSecondPart"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:DatabaseConnect.ConnectionString>
+                  <ui:DatabaseConnect.DatabaseConnection>
+                    <OutArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpReference x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">dbConnection</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:DatabaseConnect.DatabaseConnection>
+                </ui:DatabaseConnect>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Run query" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3">
+                  <ui:ExecuteQuery.DataTable>
+                    <OutArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">dtInputData</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:ExecuteQuery.DataTable>
+                  <ui:ExecuteQuery.ExistingDbConnection>
+                    <InArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">dbConnection</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ExecuteQuery.ExistingDbConnection>
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                  <ui:ExecuteQuery.Sql>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">in_Config["SelectLoteProcess"].ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ExecuteQuery.Sql>
+                </ui:ExecuteQuery>
+                <ui:DatabaseDisconnect DisplayName="Disconnect from database" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_3">
+                  <ui:DatabaseDisconnect.DatabaseConnection>
+                    <InArgument x:TypeArguments="ui:DatabaseConnection">
+                      <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">dbConnection</mca:CSharpValue>
+                    </InArgument>
+                  </ui:DatabaseDisconnect.DatabaseConnection>
+                </ui:DatabaseDisconnect>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="943,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Error">
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">"The virtual assistant can't read input file"</mca:CSharpValue>
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
